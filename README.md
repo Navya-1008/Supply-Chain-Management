@@ -200,9 +200,4 @@ AntiGravity SCM combines database management, automation, analytics, and AI tech
 # Contributors
 
 - Navya BV
-
----
-
-# License
-
-This project is developed for educational and academic purposes.
+- Sneha M
