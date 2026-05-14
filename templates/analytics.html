@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block header %}AI Demand Prediction{% endblock %}
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-12 mb-4">
+        <div class="glass-card p-4 rounded shadow-sm bg-white">
+            <h4>Demand Forecasting Model</h4>
+            <p class="text-muted">Using historical sales data from the last 60 days, our Scikit-Learn Linear Regression model predicts the demand for each product over the next 7 days.</p>
+            <button class="btn btn-primary mt-2" id="runPredictBtn">
+                <i class="bi bi-cpu me-2"></i> Run Prediction Model
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="resultsContainer" style="display: none;">
+    <div class="col-12">
+        <div class="glass-card p-4 rounded shadow-sm bg-white">
+            <h5 class="mb-3">7-Day Prediction Results</h5>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Current Stock</th>
+                            <th>Predicted 7-Day Demand</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="predictionsTableBody">
+                        <!-- Filled via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('runPredictBtn').addEventListener('click', function() {
+        this.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...';
+        this.disabled = true;
+        
+        // Simulating API call for now until we wire the backend endpoint
+        setTimeout(() => {
+            fetch('/api/predict')
+                .then(res => res.json())
+                .then(data => {
+                    const tbody = document.getElementById('predictionsTableBody');
+                    tbody.innerHTML = '';
+                    
+                    data.forEach(item => {
+                        let rowClass = item.predicted > item.current_stock ? 'table-warning' : '';
+                        let recommendation = item.predicted > item.current_stock ? 
+                            '<span class="text-danger fw-bold"><i class="bi bi-exclamation-circle me-1"></i> Restock Needed</span>' : 
+                            '<span class="text-success"><i class="bi bi-check-circle me-1"></i> Stock Sufficient</span>';
+                            
+                        tbody.innerHTML += `
+                            <tr class="${rowClass}">
+                                <td>${item.product_name}</td>
+                                <td>${item.current_stock}</td>
+                                <td class="fw-bold">${item.predicted}</td>
+                                <td>${recommendation}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    document.getElementById('resultsContainer').style.display = 'block';
+                    this.innerHTML = '<i class="bi bi-cpu me-2"></i> Run Prediction Model';
+                    this.disabled = false;
+                });
+        }, 800);
+    });
+</script>
+{% endblock %}
