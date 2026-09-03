@@ -1,6 +1,6 @@
-# AntiGravity SCM 🚚📦
+# AEKI SUPPLY CHAIN MANAGEMENT 🚚📦
 
-AntiGravity SCM is a Smart Supply Chain Management System developed to streamline and automate supply chain operations including inventory management, warehouse monitoring, order processing, shipment tracking, analytics, and AI-based demand forecasting.
+AEKI SUPPLY CHAIN MANAGEMENT is a Smart Supply Chain Management System developed to streamline and automate supply chain operations including inventory management, warehouse monitoring, order processing, shipment tracking, analytics, and AI-based demand forecasting.
 
 The project provides a centralized platform for managing products, suppliers, warehouses, customers, and logistics efficiently.
 
@@ -193,7 +193,7 @@ antigravity-scm/
 
 # Conclusion
 
-AntiGravity SCM combines database management, automation, analytics, and AI technologies to provide an intelligent and scalable supply chain management solution. The system improves operational efficiency, minimizes stock-related issues, and supports smarter business decisions.
+AEKI SUPPLY CHAIN MANAGEMENT combines database management, automation, analytics, and AI technologies to provide an intelligent and scalable supply chain management solution. The system improves operational efficiency, minimizes stock-related issues, and supports smarter business decisions.
 
 ---
 
